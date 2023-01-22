@@ -1,7 +1,7 @@
 package main.java;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.List;
 
 public class OnlineStore {
     Client client;
@@ -32,13 +32,35 @@ public class OnlineStore {
 
                 int option = onlineStoreView.getClientOption();  // ver se maiusculo ou minusculo serve
                 if (option == 'F') {
-                    System.out.println("finalizar compra");
-
                     onlineStoreView.showPaymentOptions();
-                    onlineStoreView.getClientOption();
+                    int paymentOptionIndex = onlineStoreView.getIntegerClientOption() - 1;
 
-//                    switch () {
-//
+                    PaymentOption paymentOption = PaymentOption.values()[paymentOptionIndex];
+
+                    if (paymentOption.isInstallmentBuyingAllowed()) {
+                        int maximumNumberOfInstallmentsAllowed = paymentOption.getMaximumNumberOfInstallmentsAllowed();
+                        onlineStoreView.showInstallmentBuyingOptions(maximumNumberOfInstallmentsAllowed);
+
+                        int numberOfInstallments = onlineStoreView.getIntegerClientOption();
+
+                        if (numberOfInstallments < 0 || numberOfInstallments > maximumNumberOfInstallmentsAllowed) {
+                            onlineStoreView.showInvalidOptionMessage();
+                        }
+
+//                        onlineStoreView.showEachInstallmentValueMessage();
+                    }
+
+//                    switch (paymentOption) {
+//                        case PaymentOption.BOLETO:
+//                            break;
+//                        case PaymentOption.CARTÃO_PARCELADO:
+//                            break;
+//                        case PaymentOption.CARTÃO_À_VISTA:
+//                            break;
+//                        case :
+//                            break;
+//                        default:
+//                            onlineStoreView.showInvalidOptionMessage();
 //                    }
 
 

@@ -40,6 +40,11 @@ public class OnlineStoreView {
         return option;
     }
 
+    public int getIntegerClientOption() {
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextInt();
+    }
+
     public void showWelcomeMessage() {
         System.out.println("Olá! É um prazer lhe receber na Loja Virtual!");
     }
@@ -91,9 +96,20 @@ public class OnlineStoreView {
     }
 
     public void showPaymentOptions() {
+        System.out.println();
         System.out.println("Escolha a opção de pagamento:");
         for (int i = 0; i < PaymentOption.values().length;i++) {
             System.out.println(i + 1 + " - " + PaymentOption.values()[i]);
         }
+    }
+
+    public void showInstallmentBuyingOptions(int maximumNumberOfInstallmentsAllowed) {
+        System.out.print("Esta forma de pagamento permite parcelamentos em até ");
+        System.out.println(maximumNumberOfInstallmentsAllowed + " vezes!");
+        System.out.println("Em quantas vezes gostaria de fazer o pagamento?");
+    }
+
+    public void showEachInstallmentValueMessage(BigDecimal value) {
+        System.out.format("Cada parcela terá o valor de R$ %,.2f", value);
     }
 }
