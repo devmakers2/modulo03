@@ -31,7 +31,7 @@ public class OnlineStore {
                 client.addToShoppingCart(products.get(productIndex));
                 onlineStoreView.showProductAddedToShoppingCartMessage();
             } else if (userOption == Character.getNumericValue('C')) {
-                accessShoppingCart(client.getShoppingCart2());
+                accessShoppingCart(client.getShoppingCart());
             } else if (userOption == Character.getNumericValue('S')) {
                 this.onlineStoreView.showFarewellMessage();
                 return;

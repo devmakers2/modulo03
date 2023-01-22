@@ -14,7 +14,7 @@ public class Aplicacao {
     public static void main(String[] args) throws IOException {
         Client client = new Client();
         OnlineStoreView onlineStoreView = new OnlineStoreView();
-        List<Product> products = new ArrayList<>(); // new HashMap<>();
+        List<Product> products = new ArrayList<>();
 
         products.add(new Product("caneta azul", BigDecimal.valueOf(11000)));
         products.add(new Product("azul caneta", BigDecimal.valueOf(220000)));

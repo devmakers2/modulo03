@@ -15,7 +15,9 @@ public class OnlineStoreView {
         System.out.println("Esses são nossos produtos! Escolha um para adicionar ao seu carrinho!");
 
         for (int i = 0; i < products.size(); i++) {
-            System.out.println(i + 1 + " - " + products.get(i));
+            Product product = products.get(i);
+            System.out.format("%d - %-11s - R$ %,.2f", i + 1, product.getName(), product.getPrice());
+            System.out.println();
         }
     }
 
@@ -106,7 +108,8 @@ public class OnlineStoreView {
         System.out.println();
         System.out.println("Escolha a opção de pagamento:");
         for (int i = 0; i < PaymentOption.values().length; i++) {
-            System.out.println(i + 1 + " - " + PaymentOption.values()[i]);
+            PaymentOption paymentOption = PaymentOption.values()[i];
+            System.out.println(i + 1 + " - " + paymentOption.getDescriptionInPortuguese());
         }
     }
 
