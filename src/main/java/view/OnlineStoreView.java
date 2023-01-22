@@ -1,4 +1,8 @@
-package main.java;
+package main.java.view;
+
+import main.java.model.PaymentOption;
+import main.java.model.Product;
+import main.java.model.ShoppingCart;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -15,25 +19,12 @@ public class OnlineStoreView {
         }
     }
 
-//    void showProducts(Map<Product, Integer> products) {
-//        System.out.println("Esses são nossos produtos! Escolha um para adicionar ao seu carrinho!");
-//
-//        int i0 = 1;
-//
-//        for (Product product : products.keySet()) {  // poderia ser o entrySet com as quantidades?
-//            System.out.println(i0 + " - " + product);
-//            i0++;
-//        }
-//    }
-
     void showInitialMenu() {
-        System.out.println("N - cadastrar novo cliente");
         System.out.println("C - ver meu carrinho");
-        System.out.println("L - fazer login");
         System.out.println("S - sair");
     }
 
-    int getClientOption() throws IOException {
+    public int getClientOption() throws IOException {
         int option = System.in.read();
         Scanner scanner = new Scanner(System.in);
         scanner.nextLine();
@@ -114,7 +105,7 @@ public class OnlineStoreView {
     public void showPaymentOptions() {
         System.out.println();
         System.out.println("Escolha a opção de pagamento:");
-        for (int i = 0; i < PaymentOption.values().length;i++) {
+        for (int i = 0; i < PaymentOption.values().length; i++) {
             System.out.println(i + 1 + " - " + PaymentOption.values()[i]);
         }
     }

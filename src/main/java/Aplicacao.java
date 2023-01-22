@@ -1,5 +1,10 @@
 package main.java;
 
+import main.java.model.Client;
+import main.java.model.OnlineStore;
+import main.java.model.Product;
+import main.java.view.OnlineStoreView;
+
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -11,8 +16,8 @@ public class Aplicacao {
         OnlineStoreView onlineStoreView = new OnlineStoreView();
         List<Product> products = new ArrayList<>(); // new HashMap<>();
 
-        products.add(new Product("caneta azul", BigDecimal.valueOf(11)));
-        products.add(new Product("azul caneta", BigDecimal.valueOf(22)));
+        products.add(new Product("caneta azul", BigDecimal.valueOf(11000)));
+        products.add(new Product("azul caneta", BigDecimal.valueOf(220000)));
         products.add(new Product("abacaxi", BigDecimal.valueOf(33)));
         products.add(new Product("salmão", BigDecimal.valueOf(44)));
         products.add(new Product("remédio", BigDecimal.valueOf(55)));

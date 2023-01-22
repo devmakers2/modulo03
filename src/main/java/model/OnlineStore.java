@@ -1,4 +1,6 @@
-package main.java;
+package main.java.model;
+
+import main.java.view.OnlineStoreView;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -10,7 +12,7 @@ public class OnlineStore {
     OnlineStoreView onlineStoreView;
     List<Product> products;
 
-    OnlineStore(Client client, List<Product> products, OnlineStoreView onlineStoreView) {
+    public OnlineStore(Client client, List<Product> products, OnlineStoreView onlineStoreView) {
         this.client = client;
         this.products = products;
         this.onlineStoreView = onlineStoreView;

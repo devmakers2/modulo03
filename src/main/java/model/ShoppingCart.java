@@ -1,4 +1,6 @@
-package main.java;
+package main.java.model;
+
+import main.java.model.Product;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
@@ -12,7 +14,7 @@ public class ShoppingCart {  //singleton
         products.put(product, quantity + previousQuantity);
     }
 
-    BigDecimal getTotal() {
+    public BigDecimal getTotal() {
         BigDecimal total = BigDecimal.ZERO;
 
         for (Map.Entry<Product, Integer> entry : products.entrySet()) {
