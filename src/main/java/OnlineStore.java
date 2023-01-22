@@ -29,6 +29,20 @@ public class OnlineStore {
             } else if (userOption == Character.getNumericValue('C')) {
                 System.out.println("carrinho");
                 onlineStoreView.showShoppingCart(client.getShoppingCart());
+
+                onlineStoreView.showShoppingCartOptions();
+
+                int option = onlineStoreView.getClientOption();
+
+                if (option == 'F') {
+                    System.out.println("finalizar compra");
+
+                } else if (option == 'V') {
+                    break;
+                } else {
+                    onlineStoreView.showInvalidOptionMessage();
+                }
+
             } else if (userOption == Character.getNumericValue('S')) {
                 this.onlineStoreView.showFarewellMessage();
                 return;

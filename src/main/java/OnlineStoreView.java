@@ -1,6 +1,7 @@
 package main.java;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.AbstractMap;
 import java.util.List;
 import java.util.Map;
@@ -61,10 +62,28 @@ public class OnlineStoreView {
     }
 
     public void showShoppingCart(Map<Product, Integer> shoppingCart) {
+        System.out.println();
         System.out.println("Estes são os produtos no seu carrinho:");
+        System.out.println("  produto   -   preço   -   quantidade");
+        System.out.println("--------------------------------------");
+
+        BigDecimal total = BigDecimal.ZERO;
 
         for (Map.Entry<Product, Integer> entry : shoppingCart.entrySet()) {
-            System.out.println(entry.getKey() + " x " + entry.getValue());
+            total = total.add(entry.getKey().getPrice());
+
+            System.out.format("%11s - R$ %,.2f  x %d", entry.getKey().getName(), entry.getKey().getPrice(), entry.getValue());
+            System.out.println();
         }
+        System.out.println();
+        System.out.format("total = R$ %,.2f", total);
+        System.out.println();
+    }
+
+    public void showShoppingCartOptions() {
+        System.out.println();
+        System.out.println("Por favor, escolha uma opção:");
+        System.out.println("F - finalizar compra");
+        System.out.println("V - voltar ao menu anterior");
     }
 }
