@@ -2,7 +2,6 @@ package main.java;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.AbstractMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -84,6 +83,17 @@ public class OnlineStoreView {
         System.out.println();
         System.out.println("Por favor, escolha uma opção:");
         System.out.println("F - finalizar compra");
-        System.out.println("V - voltar ao menu anterior");
+        System.out.println("V - voltar ao menu anterior e continuar comprando");
+    }
+
+    public void showProductAddedToShoppingCartMessage() {
+        System.out.println("Produto adicionado com sucesso!");
+    }
+
+    public void showPaymentOptions() {
+        System.out.println("Escolha a opção de pagamento:");
+        for (int i = 0; i < PaymentOption.values().length;i++) {
+            System.out.println(i + 1 + " - " + PaymentOption.values()[i]);
+        }
     }
 }

@@ -25,17 +25,23 @@ public class OnlineStore {
             if (userOption > 0 && userOption <= products.size()) {
                 int productIndex = userOption - 1;
                 client.addToShoppingCart(products.get(productIndex));
-                System.out.println("adicionou produto de indice" + productIndex);
+                onlineStoreView.showProductAddedToShoppingCartMessage();
             } else if (userOption == Character.getNumericValue('C')) {
-                System.out.println("carrinho");
                 onlineStoreView.showShoppingCart(client.getShoppingCart());
-
                 onlineStoreView.showShoppingCartOptions();
 
-                int option = onlineStoreView.getClientOption();
-
+                int option = onlineStoreView.getClientOption();  // ver se maiusculo ou minusculo serve
                 if (option == 'F') {
                     System.out.println("finalizar compra");
+
+                    onlineStoreView.showPaymentOptions();
+                    onlineStoreView.getClientOption();
+
+//                    switch () {
+//
+//                    }
+
+
 
                 } else if (option == 'V') {
                     break;
