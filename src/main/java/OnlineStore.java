@@ -1,6 +1,8 @@
 package main.java;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 public class OnlineStore {
@@ -27,50 +29,7 @@ public class OnlineStore {
                 client.addToShoppingCart(products.get(productIndex));
                 onlineStoreView.showProductAddedToShoppingCartMessage();
             } else if (userOption == Character.getNumericValue('C')) {
-                onlineStoreView.showShoppingCart(client.getShoppingCart());
-                onlineStoreView.showShoppingCartOptions();
-
-                int option = onlineStoreView.getClientOption();  // ver se maiusculo ou minusculo serve
-                if (option == 'F') {
-                    onlineStoreView.showPaymentOptions();
-                    int paymentOptionIndex = onlineStoreView.getIntegerClientOption() - 1;
-
-                    PaymentOption paymentOption = PaymentOption.values()[paymentOptionIndex];
-
-                    if (paymentOption.isInstallmentBuyingAllowed()) {
-                        int maximumNumberOfInstallmentsAllowed = paymentOption.getMaximumNumberOfInstallmentsAllowed();
-                        onlineStoreView.showInstallmentBuyingOptions(maximumNumberOfInstallmentsAllowed);
-
-                        int numberOfInstallments = onlineStoreView.getIntegerClientOption();
-
-                        if (numberOfInstallments < 0 || numberOfInstallments > maximumNumberOfInstallmentsAllowed) {
-                            onlineStoreView.showInvalidOptionMessage();
-                        }
-
-//                        onlineStoreView.showEachInstallmentValueMessage();
-                    }
-
-//                    switch (paymentOption) {
-//                        case PaymentOption.BOLETO:
-//                            break;
-//                        case PaymentOption.CARTÃO_PARCELADO:
-//                            break;
-//                        case PaymentOption.CARTÃO_À_VISTA:
-//                            break;
-//                        case :
-//                            break;
-//                        default:
-//                            onlineStoreView.showInvalidOptionMessage();
-//                    }
-
-
-
-                } else if (option == 'V') {
-                    break;
-                } else {
-                    onlineStoreView.showInvalidOptionMessage();
-                }
-
+                accessShoppingCart(client.getShoppingCart2());
             } else if (userOption == Character.getNumericValue('S')) {
                 this.onlineStoreView.showFarewellMessage();
                 return;
@@ -80,19 +39,60 @@ public class OnlineStore {
         }
     }
 
-//    private void login() {
-//        Map.Entry<String, String> credentials = this.onlineStoreView.getClientCredentials();
-//
-//        getClientFromCredentials(credentials);
-//    }
+    private void accessShoppingCart(ShoppingCart shoppingCart) throws IOException {
+        onlineStoreView.showShoppingCart2(shoppingCart);
 
-//    private Client getClientFromCredentials(Map.Entry<String, String> credentials) {
-//        return clients.stream().
-//                       filter(client -> client.cpf.equals(credentials.getKey())).
-//                       filter(client -> client.password.equals(credentials.getValue())).
-//                       findAny().
-//                       orElse(null);
-//    }
+        while (true) {
+            onlineStoreView.showShoppingCartOptions();
 
+            int option = onlineStoreView.getClientOption();
+            if (option == 'F' || option == 'f') {
+                finalizePurchase(shoppingCart);
+                return;
+            } else if (option == 'V' || option == 'v') {
+                return;
+            } else {
+                onlineStoreView.showInvalidOptionMessage();
+            }
+        }
+    }
 
+    private void finalizePurchase(ShoppingCart shoppingCart) {
+        boolean successfullyFinalized = false;
+        while (!successfullyFinalized) {
+            onlineStoreView.showPaymentOptions();
+
+            int paymentOptionIndex = onlineStoreView.getIntegerClientOption() - 1;
+            if (paymentOptionIndex < 0 || paymentOptionIndex >= PaymentOption.values().length) {
+                onlineStoreView.showInvalidOptionMessage();
+            } else {
+                PaymentOption paymentOption = PaymentOption.values()[paymentOptionIndex];
+                if (paymentOption.isInstallmentBuyingAllowed()) {
+                    BigDecimal total = shoppingCart.getTotal();
+                    successfullyFinalized = manageInstallmentsPurchase(paymentOption, total);
+                } else {
+                    successfullyFinalized = true;
+                }
+            }
+        }
+
+        onlineStoreView.showPurchaseCompletedMessage();
+
+        shoppingCart.empty(); // voltar ao menu inicial com novo carrinho
+    }
+
+    private boolean manageInstallmentsPurchase(PaymentOption paymentOption, BigDecimal total) {
+        int maximumNumberOfInstallmentsAllowed = paymentOption.getMaximumNumberOfInstallmentsAllowed();
+        onlineStoreView.showInstallmentBuyingOptions(maximumNumberOfInstallmentsAllowed);
+
+        int numberOfInstallments = onlineStoreView.getIntegerClientOption();
+        if (numberOfInstallments < 0 || numberOfInstallments > maximumNumberOfInstallmentsAllowed) {
+            onlineStoreView.showInvalidOptionMessage();
+            return false;
+        }
+
+        BigDecimal installmentValue = total.divide(BigDecimal.valueOf(numberOfInstallments), RoundingMode.HALF_EVEN);
+        onlineStoreView.showEachInstallmentValueMessage(installmentValue);
+        return true;
+    }
 }

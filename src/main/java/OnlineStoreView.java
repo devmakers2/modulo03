@@ -84,6 +84,22 @@ public class OnlineStoreView {
         System.out.println();
     }
 
+    public void showShoppingCart2(ShoppingCart shoppingCart) {
+        System.out.println();
+        System.out.println("Estes são os produtos no seu carrinho:");
+        System.out.println("  produto   -   preço   -   quantidade");
+        System.out.println("--------------------------------------");
+
+        for (Map.Entry<Product, Integer> entry : shoppingCart.getProducts().entrySet()) {
+            System.out.format("%11s - R$ %,.2f  x %d", entry.getKey().getName(), entry.getKey().getPrice(), entry.getValue());
+            System.out.println();
+        }
+
+        System.out.println();
+        System.out.format("total = R$ %,.2f", shoppingCart.getTotal());
+        System.out.println();
+    }
+
     public void showShoppingCartOptions() {
         System.out.println();
         System.out.println("Por favor, escolha uma opção:");
@@ -111,5 +127,12 @@ public class OnlineStoreView {
 
     public void showEachInstallmentValueMessage(BigDecimal value) {
         System.out.format("Cada parcela terá o valor de R$ %,.2f", value);
+        System.out.println();
+    }
+
+    public void showPurchaseCompletedMessage() {
+        System.out.println();
+        System.out.println("Compra finalizada com sucesso!");
+        System.out.println("Volte sempre!");
     }
 }
