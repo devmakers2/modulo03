@@ -44,9 +44,23 @@ Caso o usuário escolha uma opção de pagamento que não ofereça a opção de 
 <br>
 
 Caso o usuário escolha uma forma de pagamento que dê suporte a parcelamento, ele é requisitado a escolher o número de parcelas:
+<br>
 ![2023-01-22 (16)](https://user-images.githubusercontent.com/17331645/213941969-224558fb-22ea-4629-8fb3-5f4042fb30a4.png)
 
 <br>
 
 Após escolher um número válido de parcelas, o sistema entende que o pagamento foi feito, assim o carrinho é esvaziado e a compra é finalizada. Em seguida o usuário volta ao início, podendo fazer uma nova compra:
 ![2023-01-22 (17)](https://user-images.githubusercontent.com/17331645/213942123-268c421e-3f7c-4bda-b441-76dd9aab2ea6.png)
+
+----
+
+## Modelagem
+
+A modelagem escolhida para essa aplicação foi a seguinte:
+
+* Existe uma classe OnlineStore, que representa a loja virtual em si. Um objeto de OnlineStore possui um objeto de Client, e uma coleção de objetos de Product 
+* Existe uma classe Client, que representa a pessoa que utiliza aquela instância da loja virtual. Um objeto de Client possui um objeto de ShoppingCart.
+* Existe uma classe ShoppingCart, que representa um carrinho de compras virtual, isto é, um local virtual onde produtos são guardados até a finalização da compra. Um objeto de ShoppingCart possui uma coleção de objetos de Product.
+* Existe uma classe Product, que representa algum produto possuído pela loja virtual, ou armazenado no carrinho de compras.
+* Existe ainda um enum PaymentOptions, que agrupa todas as diferentes formas de pagamento (PayPal, boleto, etc).
+* Existe ainda uma classe específica para a interação com o usuário: a classe OnlineStoreView. Toda a entrada/saída de dados se dá por essa classe, desacoplando o sistema (back-end) do front-end.
