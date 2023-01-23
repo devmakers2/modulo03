@@ -4,7 +4,7 @@ public enum PaymentOption {
     BOLETO("boleto", false, 1),
     CARD_IN_INSTALLMENTS("cartão parcelado", true, 3),
     CARD_IN_ONE_INSTALLMENT("cartão à vista", false, 1),
-    PAYPAL("paypal", false, 1);
+    PAYPAL("PayPal", false, 1);
 
     private final String descriptionInPortuguese;
     private final boolean installmentBuyingAllowed;

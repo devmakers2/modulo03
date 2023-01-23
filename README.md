@@ -12,13 +12,12 @@ projeto individual do módulo Programação Orientada a Objetos II
 ## Funcionamento:
 A aplicação simula uma loja virtual simples.
 
-
 Inicialmente uma listagem com os produtos (previamente cadastrados) disponíveis na loja é mostrada ao usuário:
 ![2023-01-22 (7)](https://user-images.githubusercontent.com/17331645/213940765-ccb10278-9f45-42b3-9926-691b9286e919.png)
 
 <br>
 
-O sistema recebe o comando de adicionar um produto ao carrinho, um ítem por vez. Depois que um ítem é adicionado, a listagem dos produtos aparece novamente para que o usuário adicione outro produto ao carrinho:
+O sistema recebe o comando de adicionar um produto ao carrinho, um item por vez. Depois que um item é adicionado, a listagem dos produtos aparece novamente para que o usuário adicione outro produto ao carrinho:
 ![2023-01-22 (8)](https://user-images.githubusercontent.com/17331645/213940909-9e6a508e-f2a0-4b7c-9f14-0c5d43008ba6.png)
 
 <br>
@@ -28,7 +27,7 @@ Em vez de adicionar um produto ao carrinho, o usuário pode acessar o carrinho. 
 
 <br>
 
-Depois de acessar o carrinho, o usuário pode decidir ou finalizar a compra, ou retornar para continuar a compra e adicionar mais produtos ao carrinho:
+Depois de acessar o carrinho, o usuário pode decidir ou por finalizar a compra, ou por retornar para adicionar mais produtos ao carrinho:
 <br>
 ![2023-01-22 (11)](https://user-images.githubusercontent.com/17331645/213941287-a86c6de2-a45f-407f-a109-4822cc61ad51.png)
 
@@ -51,5 +50,3 @@ Caso o usuário escolha uma forma de pagamento que dê suporte a parcelamento, e
 
 Após escolher um número válido de parcelas, o sistema entende que o pagamento foi feito, assim o carrinho é esvaziado e a compra é finalizada. Em seguida o usuário volta ao início, podendo fazer uma nova compra:
 ![2023-01-22 (17)](https://user-images.githubusercontent.com/17331645/213942123-268c421e-3f7c-4bda-b441-76dd9aab2ea6.png)
-
-
