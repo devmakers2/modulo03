@@ -9,7 +9,7 @@ projeto individual do módulo Programação Orientada a Objetos II
 
 ----
 
-## Funcionamento:
+## Funcionamento
 A aplicação simula uma loja virtual simples.
 
 Inicialmente uma listagem com os produtos (previamente cadastrados) disponíveis na loja é mostrada ao usuário:

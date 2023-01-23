@@ -6,12 +6,6 @@ import java.util.Map;
 
 public class ShoppingCart {  //singleton
     private Map<Product, Integer> products = new HashMap<>();
-
-//    private  void addProduct(Product product, int quantity) {
-//        int previousQuantity = products.getOrDefault(product, 0);
-//        products.put(product, quantity + previousQuantity);
-//    }
-
     public BigDecimal getTotal() {
         BigDecimal total = BigDecimal.ZERO;
 

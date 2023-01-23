@@ -1,7 +1,7 @@
 package main.java.model;
 
 public class Client {
-    ShoppingCart shoppingCart = new ShoppingCart();
+    private ShoppingCart shoppingCart = new ShoppingCart();
 
     public void addToShoppingCart(Product product) {
         shoppingCart.add(product);

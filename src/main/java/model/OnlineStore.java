@@ -8,9 +8,9 @@ import java.math.RoundingMode;
 import java.util.List;
 
 public class OnlineStore {
-    Client client;
-    OnlineStoreView onlineStoreView;
-    List<Product> products;
+    private Client client;
+    private OnlineStoreView onlineStoreView;
+    private List<Product> products;
 
     public OnlineStore(Client client, List<Product> products, OnlineStoreView onlineStoreView) {
         this.client = client;
@@ -22,7 +22,7 @@ public class OnlineStore {
         onlineStoreView.showWelcomeMessage();
 
         while (true) {
-            onlineStoreView.showUnloggedClientMenu(products);  // talvez tenha que passar o cliente
+            onlineStoreView.showClientMenu(products);
 
             int userOption = Character.getNumericValue(onlineStoreView.getClientOption());  // ver se dá para melhorar getClientOption
 
@@ -80,7 +80,7 @@ public class OnlineStore {
 
         onlineStoreView.showPurchaseCompletedMessage();
 
-        shoppingCart.empty(); // voltar ao menu inicial com novo carrinho
+        shoppingCart.empty();
     }
 
     private boolean manageInstallmentsPurchase(PaymentOption paymentOption, BigDecimal total) {
